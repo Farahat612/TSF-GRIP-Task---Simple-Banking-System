@@ -1,0 +1,19 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Details</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'banking_app/css/styles_view_customer.css' %}">
+</head>
+<body>
+    <h1>Customer Details</h1>
+    <p><strong>Name:</strong> {{ customer.name }}</p>
+    <p><strong>Email:</strong> {{ customer.email }}</p>
+    <p><strong>Balance:</strong> ${{ customer.balance }}</p>
+    <p class="link"><a class="btn" href="{% url 'view_customers' %}">Back to Customers List</a></p>
+    <p class="link"><a class="btn" href="{% url 'transfer_money' %}">Transfer Money</a></p>
+</body>
+</html>
+

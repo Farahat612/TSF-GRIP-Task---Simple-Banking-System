@@ -1,0 +1,43 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transfer Money</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'banking_app/css/styles_transfer_money.css' %}">
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+    <h1>Transfer Money</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="sender">Select Sender:</label>
+        <select name="sender" id="sender">
+            {% for customer in customers %}
+                <option value="{{ customer.id }}">{{ customer.name }}</option>
+            {% endfor %}
+        </select><br><br>
+        <label for="receiver">Select Receiver:</label>
+        <select name="receiver" id="receiver">
+            {% for customer in customers %}
+                <option value="{{ customer.id }}">{{ customer.name }}</option>
+            {% endfor %}
+        </select><br><br>
+        <label for="amount">Amount:</label>
+        <input type="text" name="amount" id="amount" required ><br><br>
+        <input type="submit" value="Transfer">
+    </form>
+    <p class="link"><a class="btn" href="{% url 'view_customers' %}">Back to Customers List</a></p>
+    <p class="link"><a class="btn" href="{% url 'home' %}">Back to Home</a></p>
+</body>
+</html>
+

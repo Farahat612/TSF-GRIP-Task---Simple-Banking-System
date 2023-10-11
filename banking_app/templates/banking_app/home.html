@@ -1,0 +1,15 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Banking System</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'banking_app/css/styles_home.css' %}">
+</head>
+<body>
+    <h1>Welcome to the simple Banking System</h1>
+    <p><a href="{% url 'view_customers' %}">View All Customers</a></p>
+    <p><a href="{% url 'transfer_money' %}">Transfer Money</a></p>
+</body>
+</html>

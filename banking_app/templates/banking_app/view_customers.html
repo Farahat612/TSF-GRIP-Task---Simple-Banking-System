@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View All Customers</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'banking_app/css/styles_view_customers.css' %}">
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+    <h1>Customers List</h1>
+    <ul>
+        {% for customer in customers %}
+            <li><a href="{% url 'view_customer' customer.id %}">{{ customer.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <p><a class="btn" href="{% url 'home' %}">Back to Home</a></p>
+    <p><a class="btn" href="{% url 'transfer_money' %}">Transfer Money</a></p>
+</body>
+</html>
+
